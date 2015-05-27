@@ -7,10 +7,10 @@ verbose = TRUE
 
 coverageFile = args[1]
 # read per.base.coverage as a table (/path/to/sample.per.base.coverage)
-sample_name <- unlist(strsplit(args[1], split=".per.base.coverage.gz", fixed=TRUE))[1] # name of /path/to/sample
+sample_name <- unlist(strsplit(args[1], split=".per.base.coverage.gz", fixed=TRUE)) # name of /path/to/sample
 
 sample_id <- unlist(strsplit(sample_name, split="/", fixed=TRUE))
-data <- read.table(gzfile(args[1]))
+data <- read.table(gzfile(args[1]), colClasses=c("character", rep("integer", 4)))
 # read in coverage file
 coverage <- data[,5]
 # get maximum coverage value
